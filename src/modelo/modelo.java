@@ -25,7 +25,7 @@ public class modelo extends database{
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
       //introducimos los nombres de las columnas
-      String[] columNames = {"matricula","marca","modelo","nombre prop", "dni prop"};
+      String[] columNames = {"matricula","marca","modelo","nombre prop", "dni prop", "id"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       String a;
@@ -60,6 +60,7 @@ public class modelo extends database{
                 data[i][2] = res.getString( "modelo" );
                 data[i][3] = res.getString( "nombre_prop" );
                 data[i][4] = res.getString("dni_prop" );
+                data[i][5] = res.getString("id");
                 
             i++;
             
@@ -92,7 +93,7 @@ public class modelo extends database{
     
     public void añadirCoche(String marca, String modelo1, String matricula){
          
-           String q="insert into coche (marca, modelo, matricula) values ('"+marca+"','"+modelo+"','"+matricula+"')";
+           String q="insert into coche (marca, modelo, matricula) values ('"+marca+"','"+modelo1+"','"+matricula+"')";
            System.out.println(q);
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -106,9 +107,9 @@ public class modelo extends database{
         
     }
     
-    public void añadirExistentes(String matricula, String marca, String modelo1, String nombre_prop, String dni_prop){
+    public void añadirExistentes(String matricula, String marca, String modelo1, String nombre_prop, String dni_prop, String motivo){
          
-           String q="insert into existentes (matricula, marca, modelo, nombre_prop, dni_prop) values (,'"+matricula+"','"+marca+"','"+modelo+"','"+nombre_prop+"','"+dni_prop+"')";
+           String q="insert into existentes (matricula, marca, modelo, nombre_prop, dni_prop, motivo) values ('"+matricula+"','"+marca+"','"+modelo1+"','"+nombre_prop+"','"+dni_prop+"', '"+motivo+"');";
            System.out.println(q);
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -124,7 +125,7 @@ public class modelo extends database{
     
     
      public void modificarExistentes(String matricula, String marca, String modelo1, String nombre_prop, String dni_prop, String id){
-        String q="update existentes set matricula ='"+matricula+"', marca ='"+marca+"', modelo ='"+modelo+"', nombre_prop ='"+nombre_prop+"', dni_prop ='"+dni_prop+"' where id='"+id+"';";
+        String q="update existentes set matricula ='"+matricula+"', marca ='"+marca+"', modelo ='"+modelo1+"', nombre_prop ='"+nombre_prop+"', dni_prop ='"+dni_prop+"' where id='"+id+"';";
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
@@ -178,6 +179,18 @@ public class modelo extends database{
                  }
     }
       
-      
+       public String verMotivos(String id){
+        String q="select motivo from existentes where id='"+id+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 JOptionPane.showMessageDialog(null,"No se puede realizar la operación:\nZona actualmente activa");
+                 }
+       return q;
+    }
       
 }

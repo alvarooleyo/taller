@@ -5,17 +5,22 @@
  */
 package controlador;
 
+import vista.vista;
+
+
 /**
  *
- * @author Usuario
+ * @author alvaro Marquez
  */
-public class Gestion_Taller {
-
+public class test {    
+    
     /**
-     * @param args the command line arguments
+     *
+     * @param args String[] 
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //ejecuta el controlador y este la vista
+        new controlador( new vista() ).iniciar(); 
     }
-    
+
 }

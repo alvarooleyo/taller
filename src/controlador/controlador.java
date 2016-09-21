@@ -39,7 +39,8 @@ public enum AccionMVC{
     btnAñadir,
     btnEliminar,
     btnModificar,
-    btnValidar
+    btnValidar, 
+    btnMotivo
     
     
 }
@@ -67,6 +68,9 @@ public void iniciar(){
     this.vista.btnValidar1.setActionCommand("btnValidar");
     this.vista.btnValidar1.addActionListener(this);
     
+    this.vista.btnMotivo.setActionCommand("btnMotivo");
+    this.vista.btnMotivo.addActionListener(this);
+    
     
     
     this.vista.tablaExistentes.addMouseListener(this);
@@ -84,7 +88,14 @@ public void iniciar(){
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        String dni = this.vista.txtDniNuevo.getText();
+        String matricula = this.vista.txtMatriculaNuevo.getText();
+        String id = this.vista.txtId.getText();
+                        
+                
+        
         switch ( AccionMVC.valueOf(e.getActionCommand()) ){
+            
             
             case btnAñadir:
                 
@@ -96,17 +107,38 @@ public void iniciar(){
                 
                 String marca = this.vista.txtMarcaNuevo.getText();
                 String modelo1 = this.vista.txtModeloNuevo.getText();
-                String matricula = this.vista.txtMatriculaNuevo.getText();
+                String matricula2 = this.vista.txtMatriculaNuevo.getText();
+                
                 String nombre = this.vista.txtNombreNuevo.getText();
-                String dni = this.vista.txtDniNuevo.getText();
+                                           
+                String dni1 = this.vista.txtDniNuevo.getText();
                 
-                String nombre_prop = this.vista.txtNombreNuevo.getText();
-                String dni_prop = this.vista.txtDniNuevo.getText();
+                String motivo = this.vista.txtAreaMotivoNuevo.getText();
                 
-                
-                this.modelo.añadirExistentes(matricula, marca, modelo1, nombre_prop, dni_prop);
+                this.modelo.añadirExistentes(matricula2, marca, modelo1, nombre, dni1, motivo);
                 this.modelo.añadirCoche(marca, modelo1, matricula);
-                this.modelo.añadirCliente(dni, nombre);
+                this.modelo.añadirCliente(dni1, nombre);
+                
+                this.vista.setVisible(true);
+                
+                this.modelo.rellenarTablaExistentes();
+                
+                    break;
+                    
+            case btnEliminar:
+                
+                this.modelo.eliminarCliente(dni);
+                this.modelo.eliminarCoche(matricula);
+                this.modelo.eliminarExistentes(id);
+                
+                    break;
+                    
+            case btnMotivo:
+                
+                
+                this.vista.dialogoMotivo.setVisible(true);
+                
+                this.vista.txtAreaMotivo.setText(this.modelo.verMotivos(id));
                 
                     break;
             
