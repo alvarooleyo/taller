@@ -8,6 +8,7 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -72,4 +73,111 @@ public class modelo extends database{
         return tablemodel;
     }
     
+    
+    public void añadirCliente(String dni, String nombre){
+         
+           String q="insert into cliente (dni, nombre) values ('"+dni+"','"+nombre+"')";
+           System.out.println(q);
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+    
+    public void añadirCoche(String marca, String modelo1, String matricula){
+         
+           String q="insert into coche (marca, modelo, matricula) values ('"+marca+"','"+modelo+"','"+matricula+"')";
+           System.out.println(q);
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+    
+    public void añadirExistentes(String matricula, String marca, String modelo1, String nombre_prop, String dni_prop){
+         
+           String q="insert into existentes (matricula, marca, modelo, nombre_prop, dni_prop) values (,'"+matricula+"','"+marca+"','"+modelo+"','"+nombre_prop+"','"+dni_prop+"')";
+           System.out.println(q);
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+    
+    
+     public void modificarExistentes(String matricula, String marca, String modelo1, String nombre_prop, String dni_prop, String id){
+        String q="update existentes set matricula ='"+matricula+"', marca ='"+marca+"', modelo ='"+modelo+"', nombre_prop ='"+nombre_prop+"', dni_prop ='"+dni_prop+"' where id='"+id+"';";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+    
+     
+     public void eliminarExistentes(String id){
+        String q="delete from existentes where id='"+id+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 JOptionPane.showMessageDialog(null,"No se puede realizar la operación:\nZona actualmente activa");
+                 }
+    }
+     
+      public void eliminarCoche(String matricula){
+        String q="delete from coche where matricula='"+matricula+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 JOptionPane.showMessageDialog(null,"No se puede realizar la operación:\nZona actualmente activa");
+                 }
+    }
+    
+    
+      public void eliminarCliente(String dni){
+        String q="delete from cliente where dni='"+dni+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 JOptionPane.showMessageDialog(null,"No se puede realizar la operación:\nZona actualmente activa");
+                 }
+    }
+      
+      
+      
 }
