@@ -27,8 +27,11 @@ public class controlador implements ActionListener, MouseListener {
     
 public controlador (vista vista){
     this.vista=vista;
+    this.vista.setLocationRelativeTo(null);
     
     System.out.println("Construyendo controlador");
+    System.out.println("cargando tabla");
+    this.modelo.rellenarTablaExistentes();
     
 }   
 
@@ -100,6 +103,7 @@ public void iniciar(){
             case btnAñadir:
                 
                 this.vista.dialogoRecepcion.setVisible(true);
+                this.vista.dialogoRecepcion.setLocationRelativeTo(vista);
                 
                     break;
             
@@ -150,27 +154,22 @@ public void iniciar(){
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

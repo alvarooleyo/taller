@@ -121,6 +121,9 @@ public class vista extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        dialogoRecepcion.setMinimumSize(new java.awt.Dimension(500, 500));
+        dialogoRecepcion.setPreferredSize(new java.awt.Dimension(475, 465));
+
         jLabel10.setFont(new java.awt.Font("Engravers MT", 3, 18)); // NOI18N
         jLabel10.setText("AÑADIR NUEVO VEHICULO");
 
@@ -239,7 +242,7 @@ public class vista extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnValidar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dialogoRecepcionLayout = new javax.swing.GroupLayout(dialogoRecepcion.getContentPane());

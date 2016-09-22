@@ -25,7 +25,7 @@ public class modelo extends database{
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
       //introducimos los nombres de las columnas
-      String[] columNames = {"matricula","marca","modelo","nombre prop", "dni prop", "id"};
+      String[] columNames = {"matricula","marca","modelo","nombre_prop", "dni_prop", "id", "motivo"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       String a;
@@ -41,7 +41,7 @@ public class modelo extends database{
          System.err.println( e.getMessage() );
       }
     //se crea una matriz con tantas filas y columnas que necesite
-    Object[][] data = new String[registros][7];
+    Object[][] data = new String[registros][8];
         System.out.println("Sigue");
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
@@ -60,10 +60,11 @@ public class modelo extends database{
                 data[i][2] = res.getString( "modelo" );
                 data[i][3] = res.getString( "nombre_prop" );
                 data[i][4] = res.getString("dni_prop" );
-                data[i][5] = res.getString("id");
+                data[i][5] = res.getString( "id" );
+                data[i][6] = res.getString( "motivo" );
                 
             i++;
-            
+             System.out.println(i);
          }
          res.close();
          //se añade la matriz de datos en el DefaultTableModel
@@ -73,6 +74,7 @@ public class modelo extends database{
         }
         return tablemodel;
     }
+    
     
     
     public void añadirCliente(String dni, String nombre){
