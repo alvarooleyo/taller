@@ -25,7 +25,7 @@ public class modelo extends database{
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
       //introducimos los nombres de las columnas
-      String[] columNames = {"matricula","marca","modelo","nombre_prop", "dni_prop", "id", "motivo"};
+      String[] columNames = {"matricula","marca","modelo","nombre_prop", "dni_prop", "id"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       String a;
@@ -41,7 +41,7 @@ public class modelo extends database{
          System.err.println( e.getMessage() );
       }
     //se crea una matriz con tantas filas y columnas que necesite
-    Object[][] data = new String[registros][8];
+    Object[][] data = new String[registros][7];
         System.out.println("Sigue");
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
@@ -61,7 +61,7 @@ public class modelo extends database{
                 data[i][3] = res.getString( "nombre_prop" );
                 data[i][4] = res.getString("dni_prop" );
                 data[i][5] = res.getString( "id" );
-                data[i][6] = res.getString( "motivo" );
+                
                 
             i++;
              System.out.println(i);
@@ -109,9 +109,9 @@ public class modelo extends database{
         
     }
     
-    public void añadirExistentes(String matricula, String marca, String modelo1, String nombre_prop, String dni_prop, String motivo){
+    public void añadirExistentes(String matricula, String marca, String modelo1, String nombre_prop, String dni_prop, String averia){
          
-           String q="insert into existentes (matricula, marca, modelo, nombre_prop, dni_prop, motivo) values ('"+matricula+"','"+marca+"','"+modelo1+"','"+nombre_prop+"','"+dni_prop+"', '"+motivo+"');";
+           String q="insert into existentes (matricula, marca, modelo, nombre_prop, dni_prop, averia) values ('"+matricula+"','"+marca+"','"+modelo1+"','"+nombre_prop+"','"+dni_prop+"', '"+averia+"');";
            System.out.println(q);
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -182,17 +182,22 @@ public class modelo extends database{
     }
       
        public String verMotivos(String id){
-        String q="select motivo from existentes where id='"+id+"'";
+        String q="select averia from existentes where id='"+id+"'";
+        String averia=null;
          try{
-             PreparedStatement pstm = this.getConexion().prepareStatement(q);
-             pstm.execute();
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);             
+             ResultSet res=pstm.executeQuery();
+             res.next();
+             averia=res.getString("averia");
+             res.close();
              pstm.close();
-             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             
              }catch(SQLException e){
                  System.err.println( e.getMessage() );
-                 JOptionPane.showMessageDialog(null,"No se puede realizar la operación:\nZona actualmente activa");
                  }
-       return q;
+          return averia;
+      
+       
     }
       
 }

@@ -31,7 +31,7 @@ public controlador (vista vista){
     
     System.out.println("Construyendo controlador");
     System.out.println("cargando tabla");
-    this.modelo.rellenarTablaExistentes();
+    this.vista.tablaExistentes.setModel(this.modelo.rellenarTablaExistentes());
     
 }   
 
@@ -43,7 +43,8 @@ public enum AccionMVC{
     btnEliminar,
     btnModificar,
     btnValidar, 
-    btnMotivo
+    btnAveria,
+    btnLimpiar
     
     
 }
@@ -71,8 +72,11 @@ public void iniciar(){
     this.vista.btnValidar1.setActionCommand("btnValidar");
     this.vista.btnValidar1.addActionListener(this);
     
-    this.vista.btnMotivo.setActionCommand("btnMotivo");
-    this.vista.btnMotivo.addActionListener(this);
+    this.vista.btnAveria.setActionCommand("btnAveria");
+    this.vista.btnAveria.addActionListener(this);
+    
+    this.vista.btnLimpiar.setActionCommand("btnLimpiar");
+    this.vista.btnLimpiar.addActionListener(this);
     
     
     
@@ -105,6 +109,15 @@ public void iniciar(){
                 this.vista.dialogoRecepcion.setVisible(true);
                 this.vista.dialogoRecepcion.setLocationRelativeTo(vista);
                 
+                 this.vista.txtnombre.setText("");
+                this.vista.txtMarca.setText("");
+                this.vista.txtDni.setText("");
+                this.vista.txtModelo.setText("");
+                this.vista.txtMatricula.setText("");
+                this.vista.txtId.setText("");
+                
+                
+                
                     break;
             
             case btnValidar:
@@ -117,32 +130,79 @@ public void iniciar(){
                                            
                 String dni1 = this.vista.txtDniNuevo.getText();
                 
-                String motivo = this.vista.txtAreaMotivoNuevo.getText();
+                String averia = this.vista.txtAreaMotivoNuevo.getText();
                 
-                this.modelo.añadirExistentes(matricula2, marca, modelo1, nombre, dni1, motivo);
-                this.modelo.añadirCoche(marca, modelo1, matricula);
-                this.modelo.añadirCliente(dni1, nombre);
+                this.modelo.añadirExistentes(matricula2, marca, modelo1, nombre, dni1, averia);
                 
+                this.vista.txtNombreNuevo.setText("");
+                this.vista.txtMarcaNuevo.setText("");
+                this.vista.txtDniNuevo.setText("");
+                this.vista.txtModeloNuevo.setText("");
+                this.vista.txtMatriculaNuevo.setText("");
+                this.vista.txtAreaMotivoNuevo.setText("");
+
                 this.vista.setVisible(true);
                 
-                this.modelo.rellenarTablaExistentes();
+               this.vista.tablaExistentes.setModel(this.modelo.rellenarTablaExistentes());
                 
                     break;
                     
             case btnEliminar:
-                
-                this.modelo.eliminarCliente(dni);
-                this.modelo.eliminarCoche(matricula);
+     
                 this.modelo.eliminarExistentes(id);
+                
+                this.vista.tablaExistentes.setModel(this.modelo.rellenarTablaExistentes());
+                
+                this.vista.txtnombre.setText("");
+                this.vista.txtMarca.setText("");
+                this.vista.txtDni.setText("");
+                this.vista.txtModelo.setText("");
+                this.vista.txtMatricula.setText("");
+                this.vista.txtId.setText("");
                 
                     break;
                     
-            case btnMotivo:
+            case btnAveria:
                 
                 
                 this.vista.dialogoMotivo.setVisible(true);
                 
                 this.vista.txtAreaMotivo.setText(this.modelo.verMotivos(id));
+                
+                    break;
+                    
+            case btnModificar:
+                
+                String matricula3 = this.vista.txtMatricula.getText();
+                String modelo3 = this.vista.txtModelo.getText();
+                String nombre3 = this.vista.txtnombre.getText();
+                String dni3 = this.vista.txtDni.getText();
+                String marca3 = this.vista.txtMarca.getText();
+                String id3 = this.vista.txtId.getText();
+                
+                this.modelo.modificarExistentes(matricula3, marca3, modelo3, nombre3, dni3, id3);
+                
+                this.vista.tablaExistentes.setModel(this.modelo.rellenarTablaExistentes());
+                
+                this.vista.txtnombre.setText("");
+                this.vista.txtMarca.setText("");
+                this.vista.txtDni.setText("");
+                this.vista.txtModelo.setText("");
+                this.vista.txtMatricula.setText("");
+                this.vista.txtId.setText("");
+                
+                
+                    break;
+                
+            case btnLimpiar:
+                
+                this.vista.txtnombre.setText("");
+                this.vista.txtMarca.setText("");
+                this.vista.txtDni.setText("");
+                this.vista.txtModelo.setText("");
+                this.vista.txtMatricula.setText("");
+                this.vista.txtId.setText("");
+                
                 
                     break;
             
@@ -154,6 +214,29 @@ public void iniciar(){
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+        int fila;
+        
+        System.out.println("Entra en el case tabla");
+             fila = this.vista.tablaExistentes.rowAtPoint(e.getPoint());
+             
+          
+            if (fila > -1){            
+                
+                
+                this.vista.txtnombre.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 0) ));
+                this.vista.txtMarca.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 1) ));
+                this.vista.txtDni.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 2) ));
+                this.vista.txtModelo.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 3) ));
+                this.vista.txtMatricula.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 4))));
+                this.vista.txtId.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 5))));
+                
+                
+                
+                
+            }
+               
+        
     }
 
     @Override

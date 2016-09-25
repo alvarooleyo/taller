@@ -75,12 +75,14 @@ public class vista extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        btnMotivo = new javax.swing.JButton();
+        btnAveria = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
 
         jLabel9.setText("Por favor, indique el motivo por el que el coche visita el taller.");
 
         txtMotivo.setColumns(20);
         txtMotivo.setRows(5);
+        txtMotivo.setEnabled(false);
         jScrollPane1.setViewportView(txtMotivo);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -122,7 +124,6 @@ public class vista extends javax.swing.JFrame {
         );
 
         dialogoRecepcion.setMinimumSize(new java.awt.Dimension(500, 500));
-        dialogoRecepcion.setPreferredSize(new java.awt.Dimension(475, 465));
 
         jLabel10.setFont(new java.awt.Font("Engravers MT", 3, 18)); // NOI18N
         jLabel10.setText("AÑADIR NUEVO VEHICULO");
@@ -361,8 +362,12 @@ public class vista extends javax.swing.JFrame {
 
         jLabel7.setText("ID: ");
 
-        btnMotivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconollave.png"))); // NOI18N
-        btnMotivo.setText("VER AVERIAS");
+        txtId.setEnabled(false);
+
+        btnAveria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconollave.png"))); // NOI18N
+        btnAveria.setText("VER AVERIAS");
+
+        btnLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -371,7 +376,7 @@ public class vista extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addGap(75, 75, 75))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -416,12 +421,17 @@ public class vista extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(134, 134, 134)
-                                .addComponent(btnMotivo)))
+                                .addComponent(btnAveria)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addComponent(btnLimpiar)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,8 +445,9 @@ public class vista extends javax.swing.JFrame {
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(30, 30, 30)
+                    .addComponent(jLabel3)
+                    .addComponent(btnLimpiar))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -444,7 +455,7 @@ public class vista extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -456,7 +467,7 @@ public class vista extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btnMotivo))
+                    .addComponent(btnAveria))
                 .addContainerGap())
         );
 
@@ -512,9 +523,10 @@ public class vista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnAveria;
     public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;
-    public javax.swing.JButton btnMotivo;
     public javax.swing.JButton btnValidar1;
     public javax.swing.JDialog dialogoAveria;
     public javax.swing.JDialog dialogoMotivo;
@@ -547,17 +559,17 @@ public class vista extends javax.swing.JFrame {
     public javax.swing.JTable tablaExistentes;
     public javax.swing.JTextArea txtAreaMotivo;
     public javax.swing.JTextArea txtAreaMotivoNuevo;
-    private javax.swing.JTextField txtDni;
+    public javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtDniNuevo;
     public javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtMarca;
+    public javax.swing.JTextField txtMarca;
     public javax.swing.JTextField txtMarcaNuevo;
-    private javax.swing.JTextField txtMatricula;
+    public javax.swing.JTextField txtMatricula;
     public javax.swing.JTextField txtMatriculaNuevo;
-    private javax.swing.JTextField txtModelo;
+    public javax.swing.JTextField txtModelo;
     public javax.swing.JTextField txtModeloNuevo;
     public javax.swing.JTextArea txtMotivo;
     public javax.swing.JTextField txtNombreNuevo;
-    private javax.swing.JTextField txtnombre;
+    public javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }
