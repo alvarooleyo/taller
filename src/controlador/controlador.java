@@ -60,13 +60,17 @@ public void iniciar(){
     
     this.vista.setVisible(true);
     
+    this.vista.panelInicio.setVisible(true);
+    
+    this.vista.panelPrograma.setVisible(false);
+    
     this.vista.btnAgregar.setActionCommand("btnAñadir");
     this.vista.btnAgregar.addActionListener(this);
     
     this.vista.btnEliminar.setActionCommand("btnEliminar");
     this.vista.btnEliminar.addActionListener(this);
     
-    this.vista.btnModificar.setActionCommand("btnEliminar");
+    this.vista.btnModificar.setActionCommand("btnModificar");
     this.vista.btnModificar.addActionListener(this);
     
     this.vista.btnValidar1.setActionCommand("btnValidar");
@@ -167,7 +171,13 @@ public void iniciar(){
                 
                 this.vista.dialogoMotivo.setVisible(true);
                 
+                this.vista.dialogoMotivo.setLocationRelativeTo(null);
+                
+                this.vista.dialogoMotivo.setSize(400, 250);
+                
                 this.vista.txtAreaMotivo.setText(this.modelo.verMotivos(id));
+                
+                
                 
                     break;
                     
@@ -224,11 +234,11 @@ public void iniciar(){
             if (fila > -1){            
                 
                 
-                this.vista.txtnombre.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 0) ));
+                this.vista.txtMatricula.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 0) ));
                 this.vista.txtMarca.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 1) ));
-                this.vista.txtDni.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 2) ));
-                this.vista.txtModelo.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 3) ));
-                this.vista.txtMatricula.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 4))));
+                this.vista.txtModelo.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 2) ));
+                this.vista.txtnombre.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 3) ));
+                this.vista.txtDni.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 4))));
                 this.vista.txtId.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 5))));
                 
                 

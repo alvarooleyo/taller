@@ -18,13 +18,13 @@ public class database {
   /** contraseÃ±a de MySql*/
   private String password = "nikiekany";
   /** Cadena de conexion */
-  private String url = "jdbc:mysql://79.148.236.236/"+db;
+  private String url = "jdbc:mysql://192.168.28.3/"+db;
   /** variable para trabajar con la conexion a la base de datos */
   private Connection conn = null;
 
    /** Constructor de clase */
    public database(){
-        this.url = "jdbc:mysql://79.148.236.236/"+this.db;
+        this.url = "jdbc:mysql://192.168.28.3/"+this.db;
        try{
          //obtenemos el driver de para mysql
          Class.forName("com.mysql.jdbc.Driver");
