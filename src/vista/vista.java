@@ -87,6 +87,7 @@ public class vista extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         btnAveria = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
 
         jLabel9.setText("Por favor, indique el motivo por el que el coche visita el taller.");
 
@@ -424,15 +425,18 @@ public class vista extends javax.swing.JFrame {
 
         btnLimpiar.setText("Limpiar");
 
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras.jpg"))); // NOI18N
+
         javax.swing.GroupLayout panelProgramaLayout = new javax.swing.GroupLayout(panelPrograma);
         panelPrograma.setLayout(panelProgramaLayout);
         panelProgramaLayout.setHorizontalGroup(
             panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProgramaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 9, Short.MAX_VALUE)
                 .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(221, 221, 221)
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(177, 177, 177)
                         .addComponent(jLabel1))
                     .addGroup(panelProgramaLayout.createSequentialGroup()
                         .addGap(85, 85, 85)
@@ -444,59 +448,64 @@ public class vista extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnLimpiar))
-                    .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel4)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(jLabel7)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelProgramaLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(btnAveria)
                         .addGap(70, 70, 70)
                         .addComponent(btnModificar)
                         .addGap(52, 52, 52)
-                        .addComponent(btnEliminar)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnEliminar))
+                    .addGroup(panelProgramaLayout.createSequentialGroup()
+                        .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelProgramaLayout.createSequentialGroup()
+                                .addGap(179, 179, 179)
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpiar))
+                            .addGroup(panelProgramaLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel4)
+                                .addGap(4, 4, 4)
+                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 56, Short.MAX_VALUE))
         );
         panelProgramaLayout.setVerticalGroup(
             panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProgramaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addGap(0, 44, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(panelProgramaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelProgramaLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addComponent(jLabel2))
                     .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
+                        .addGap(19, 19, 19)
                         .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addGap(22, 22, 22)
                         .addComponent(jLabel3))
                     .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnLimpiar))
-                .addGap(28, 28, 28)
+                        .addGap(19, 19, 19)
+                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
                 .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -507,18 +516,17 @@ public class vista extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))))
-                .addGap(15, 15, 15)
-                .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelProgramaLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel7))
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
+                .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(btnLimpiar))
+                .addGap(16, 16, 16)
                 .addGroup(panelProgramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAveria)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(8, 8, 8))
         );
 
         getContentPane().add(panelPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 380));
@@ -575,6 +583,7 @@ public class vista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnAtras;
     public javax.swing.JButton btnAveria;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnEntregar;

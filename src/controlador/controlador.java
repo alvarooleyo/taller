@@ -44,7 +44,9 @@ public enum AccionMVC{
     btnModificar,
     btnValidar, 
     btnAveria,
-    btnLimpiar
+    btnLimpiar,
+    btnExistentes,
+    btnAtras
     
     
 }
@@ -82,6 +84,12 @@ public void iniciar(){
     this.vista.btnLimpiar.setActionCommand("btnLimpiar");
     this.vista.btnLimpiar.addActionListener(this);
     
+    this.vista.btnExistentes.setActionCommand("btnExistentes");
+    this.vista.btnExistentes.addActionListener(this);
+    
+    this.vista.btnAtras.setActionCommand("btnAtras");
+    this.vista.btnAtras.addActionListener(this);
+    
     
     
     this.vista.tablaExistentes.addMouseListener(this);
@@ -113,7 +121,7 @@ public void iniciar(){
                 this.vista.dialogoRecepcion.setVisible(true);
                 this.vista.dialogoRecepcion.setLocationRelativeTo(vista);
                 
-                 this.vista.txtnombre.setText("");
+                this.vista.txtnombre.setText("");
                 this.vista.txtMarca.setText("");
                 this.vista.txtDni.setText("");
                 this.vista.txtModelo.setText("");
@@ -151,6 +159,14 @@ public void iniciar(){
                 
                     break;
                     
+            case btnExistentes:
+                
+                this.vista.panelPrograma.setVisible(true);
+                this.vista.panelInicio.setVisible(false);
+                
+                
+                break;
+            
             case btnEliminar:
      
                 this.modelo.eliminarExistentes(id);
@@ -215,6 +231,13 @@ public void iniciar(){
                 
                 
                     break;
+                    
+            case btnAtras:
+                
+                this.vista.panelPrograma.setVisible(false);
+                this.vista.panelInicio.setVisible(true);
+                
+                break;
             
         }
             
