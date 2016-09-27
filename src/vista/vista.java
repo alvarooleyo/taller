@@ -88,6 +88,13 @@ public class vista extends javax.swing.JFrame {
         btnAveria = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
+        panelEntrega = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tablaEntrega = new javax.swing.JTable();
+        btnEntrega = new javax.swing.JButton();
+        btnAtras2 = new javax.swing.JButton();
+        txtId2 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
 
         jLabel9.setText("Por favor, indique el motivo por el que el coche visita el taller.");
 
@@ -531,6 +538,59 @@ public class vista extends javax.swing.JFrame {
 
         getContentPane().add(panelPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 380));
 
+        tablaEntrega.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tablaEntrega);
+
+        btnEntrega.setText("ENTREGA");
+
+        btnAtras2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras.jpg"))); // NOI18N
+
+        jLabel25.setText("Id: ");
+
+        javax.swing.GroupLayout panelEntregaLayout = new javax.swing.GroupLayout(panelEntrega);
+        panelEntrega.setLayout(panelEntregaLayout);
+        panelEntregaLayout.setHorizontalGroup(
+            panelEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addGroup(panelEntregaLayout.createSequentialGroup()
+                .addComponent(btnAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelEntregaLayout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addGroup(panelEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtId2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelEntregaLayout.setVerticalGroup(
+            panelEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEntregaLayout.createSequentialGroup()
+                .addComponent(btnAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(btnEntrega)
+                .addGap(76, 76, 76))
+        );
+
+        getContentPane().add(panelEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 380));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -584,8 +644,10 @@ public class vista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnAtras;
+    public javax.swing.JButton btnAtras2;
     public javax.swing.JButton btnAveria;
     public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnEntrega;
     public javax.swing.JButton btnEntregar;
     public javax.swing.JButton btnExistentes;
     public javax.swing.JButton btnLimpiar;
@@ -612,6 +674,7 @@ public class vista extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel22;
     public javax.swing.JLabel jLabel23;
     public javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -625,14 +688,18 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    public javax.swing.JPanel panelEntrega;
     public javax.swing.JPanel panelInicio;
     public javax.swing.JPanel panelPrograma;
+    public javax.swing.JTable tablaEntrega;
     public javax.swing.JTable tablaExistentes;
     public javax.swing.JTextArea txtAreaMotivo;
     public javax.swing.JTextArea txtAreaMotivoNuevo;
     public javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtDniNuevo;
     public javax.swing.JTextField txtId;
+    public javax.swing.JTextField txtId2;
     public javax.swing.JTextField txtMarca;
     public javax.swing.JTextField txtMarcaNuevo;
     public javax.swing.JTextField txtMatricula;

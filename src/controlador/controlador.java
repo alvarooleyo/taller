@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 import modelo.modelo;
 import vista.vista;
 
@@ -46,13 +47,17 @@ public enum AccionMVC{
     btnAveria,
     btnLimpiar,
     btnExistentes,
-    btnAtras
+    btnAtras,
+    btnEntregar, 
+    btnEntrega,
+    btnAtras2
     
     
 }
 
 public enum MouseMVC{
-    tablaExistentes
+    tablaExistentes,
+    tablaEntrega
 }
     
 
@@ -61,10 +66,10 @@ public void iniciar(){
     System.out.println("Iniciando");
     
     this.vista.setVisible(true);
-    
     this.vista.panelInicio.setVisible(true);
-    
     this.vista.panelPrograma.setVisible(false);
+    this.vista.panelEntrega.setVisible(false);
+    
     
     this.vista.btnAgregar.setActionCommand("btnAñadir");
     this.vista.btnAgregar.addActionListener(this);
@@ -90,10 +95,25 @@ public void iniciar(){
     this.vista.btnAtras.setActionCommand("btnAtras");
     this.vista.btnAtras.addActionListener(this);
     
+    this.vista.btnEntregar.setActionCommand("btnEntregar");
+    this.vista.btnEntregar.addActionListener(this);
+    
+    this.vista.btnEntrega.setActionCommand("btnEntrega");
+    this.vista.btnEntrega.addActionListener(this);
+    
+    this.vista.btnAtras2.setActionCommand("btnAtras2");
+    this.vista.btnAtras2.addActionListener(this);
+    
+    
     
     
     this.vista.tablaExistentes.addMouseListener(this);
     this.vista.tablaExistentes.setName("tablaExistentes");
+
+    this.vista.tablaEntrega.addMouseListener(this);
+    this.vista.tablaEntrega.setName("tablaEntrega");
+    
+
 }
     
     
@@ -237,6 +257,37 @@ public void iniciar(){
                 this.vista.panelPrograma.setVisible(false);
                 this.vista.panelInicio.setVisible(true);
                 
+                
+                break;
+                
+            case btnEntregar:
+                
+                this.vista.panelEntrega.setVisible(true);
+                this.vista.panelInicio.setVisible(false);
+                this.vista.tablaEntrega.setModel(this.modelo.rellenarTablaExistentes());
+                
+                break;
+                
+            case btnEntrega:
+                
+                String idEntrega = this.vista.txtId2.getText();
+                
+                this.modelo.eliminarExistentes(idEntrega);
+                
+                JOptionPane.showMessageDialog(null, "El vehículo será entregado al cliente.");
+                
+                this.vista.tablaEntrega.setModel(this.modelo.rellenarTablaExistentes());
+                
+                break;
+                
+            case btnAtras2:
+                
+                this.vista.panelEntrega.setVisible(false);
+                this.vista.panelPrograma.setVisible(false);
+                this.vista.panelInicio.setVisible(true);
+                
+                this.vista.tablaExistentes.setModel(this.modelo.rellenarTablaExistentes());
+                
                 break;
             
         }
@@ -248,26 +299,48 @@ public void iniciar(){
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        int fila;
+        switch (controlador.MouseMVC.valueOf(e.getComponent().getName())){
         
-        System.out.println("Entra en el case tabla");
-             fila = this.vista.tablaExistentes.rowAtPoint(e.getPoint());
-             
-          
-            if (fila > -1){            
+            case tablaExistentes:
+        
+                int fila;
+        
+                System.out.println("Entra en el case tabla");
+                     fila = this.vista.tablaExistentes.rowAtPoint(e.getPoint());
+
+
+                    if (fila > -1){            
+
+
+                        this.vista.txtMatricula.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 0) ));
+                        this.vista.txtMarca.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 1) ));
+                        this.vista.txtModelo.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 2) ));
+                        this.vista.txtnombre.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 3) ));
+                        this.vista.txtDni.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 4))));
+                        this.vista.txtId.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 5))));
+
+
+
+
+                    }
+                    break;
+                    
+            case tablaEntrega:
                 
-                
-                this.vista.txtMatricula.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 0) ));
-                this.vista.txtMarca.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 1) ));
-                this.vista.txtModelo.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 2) ));
-                this.vista.txtnombre.setText( String.valueOf( this.vista.tablaExistentes.getValueAt(fila, 3) ));
-                this.vista.txtDni.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 4))));
-                this.vista.txtId.setText(String.valueOf((this.vista.tablaExistentes.getValueAt(fila, 5))));
-                
-                
-                
-                
-            }
+                    int fila2;
+
+                System.out.println("Entra en el case tabla");
+                     fila2 = this.vista.tablaEntrega.rowAtPoint(e.getPoint());
+
+
+                    if (fila2 > -1){            
+
+
+                       this.vista.txtId2.setText(String.valueOf((this.vista.tablaEntrega.getValueAt(fila2, 5))));
+
+                    }
+                    break;
+    }
                
         
     }
